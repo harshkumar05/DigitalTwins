@@ -9,12 +9,18 @@ from keras import layers
 # Load Training Data
 train_data = pd.read_csv("TrainingData.csv")  # Ensure the correct path
 
+# df=pd.DataFrame(train_data)
+# print(df)
+print(train_data.columns.tolist())
+
+
+
 # Drop any duplicate rows or irrelevant columns
 train_data = train_data.drop_duplicates().reset_index(drop=True)
 
 # Identify Feature Columns and Target Column
-feature_columns = train_data.columns.difference(["Optimized Performance (%)"])  # All except target
-target_column = "Optimized Performance (%)"
+feature_columns = train_data.columns.difference(["Optimized_Performance"])  # All except target
+target_column = "Optimized_Performance"
 
 # Extract Features (X) and Target (y)
 X = train_data[feature_columns]
